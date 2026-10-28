@@ -8,7 +8,7 @@
  const percent = n => new Intl.NumberFormat('fr-FR', { maximumFractionDigits:2 }).format(n) + ' %';
  const signed = n => (n > 0 ? '+' : '') + percent(n);
  const escape = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- let input = E.defaults(), selectedPlan = 'robust', analysis, activePage = 'projet';
+ let input = E.defaults(), selectedPlan = 'robust', analysis, activePage = 'scenarios';
  let loadNote = '';
  const STORAGE_KEY = 'kassim-share-demo-v1';
  try {
@@ -31,13 +31,13 @@
   $('export-csv').disabled = !analysis.feasibleCount;
   if (analysis.errors.length) {
    issue.textContent = analysis.errors.join(' '); $('plans-area').hidden = true;
-   ['metric-budget','metric-delta','metric-regret'].forEach(id => { $(id).textContent = '—'; }); return;
+   ['metric-budget','metric-delta','metric-regret'].forEach(id => { $(id).textContent = '—'; }); lab.render(); return;
   }
   if (!analysis.feasibleCount) {
    issue.textContent = 'Aucun plan faisable trouvé sur la grille de 5 %. Cela ne prouve pas une impossibilité avec des parts plus fines. Vérifiez capacités, qualification et concentration ; un solveur continu serait nécessaire pour conclure au-delà de cette grille.';
    $('plans-area').hidden = true;
    ['metric-budget','metric-delta','metric-regret'].forEach(id => { $(id).textContent = '—'; });
-   $('metric-delta-note').textContent = 'Pas de comparaison exploitable sur cette grille.'; renderSuppliersPrices(); renderScenarioTable(); return;
+   $('metric-delta-note').textContent = 'Pas de comparaison exploitable sur cette grille.'; renderSuppliersPrices(); renderScenarioTable(); lab.render(); return;
   }
   $('plans-area').hidden = false;
   if (!analysis.reference.feasible) issue.textContent = 'Le mix actuel 60 / 30 / 10 ne respecte plus les contraintes. Son coût reste affiché comme contre-factuel ; aucun gain ni regret n’est calculé contre cette référence infaisable.';
@@ -61,7 +61,7 @@
   const explanation = p.id === 'current' ? 'Vous examinez le mix de référence, sans réallocation.' : p.id === 'central' ? 'Ce mix minimise le coût du scénario central sur la grille. Il peut coûter davantage dans un autre futur.' : `Ce mix minimise le regret maximal sur les trois scénarios de la grille. Son surcoût central par rapport au minimum est de ${money(Math.max(0,centralPremium))}.`;
   $('decision-explanation').innerHTML = `<strong>${escape(explanation)}</strong><p class="small section-gap">Les sources restent supposées substituables et disponibles. Avant toute décision réelle : engagements de volume, qualification par pièce, délais et coûts de changement à confirmer.</p>`;
   $('plans-table').innerHTML = analysis.plans.map(plan => `<tr class="${p.id===plan.id?'selected':''}"><td><strong>${escape(plan.name)}</strong><br><span class="small muted">${plan.shares.map(v=>Math.round(v*100)).join(' / ')} %</span></td>${plan.costs.map(c=>`<td class="num">${money(c.total)}</td>`).join('')}<td class="num">${plan.feasible?money(plan.maxRegret):'—'}</td><td><span class="badge ${plan.feasible?'ok':'error'}">${plan.feasible?'Faisable':'Hors contraintes'}</span></td></tr>`).join('');
-  renderChart(); renderSuppliersPrices(); renderScenarioTable();
+  renderChart(); renderSuppliersPrices(); renderScenarioTable(); lab.render();
  }
  function renderScenarioTable() {
   if (!analysis.paths) return;
@@ -107,13 +107,13 @@
   $('workflow').querySelectorAll('button').forEach(btn=>btn.addEventListener('click',()=>{const i=Number(btn.dataset.flow);renderFlow(i);$('workflow').querySelector(`[data-flow="${i}"]`)?.focus({preventScroll:true});}));
  }
  function navigate() {
-  const requested=location.hash.slice(1), valid=['projet','decision','fournisseurs','fonctionnement','pilote'];
+  const requested=location.hash.slice(1), valid=['scenarios','documents','veille','projet','decision','fournisseurs','fonctionnement','pilote'];
   if(requested==='content') return;
-  activePage=valid.includes(requested)?requested:'projet';
+  activePage=valid.includes(requested)?requested:'scenarios';
   document.querySelectorAll('.page').forEach(page=>{page.hidden=page.id!=='page-'+activePage;});
   document.querySelectorAll('.nav a').forEach(a=>{if(a.hash==='#'+activePage)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
   document.title='Kassim — '+$('title-'+activePage).textContent;
-  requestAnimationFrame(renderChart);
+  requestAnimationFrame(()=>{renderChart();lab.render();workspace.render();news.render();});
  }
  function download(name,content,type) {
   const blob=new Blob([content],{type}); const url=URL.createObjectURL(blob), link=document.createElement('a');link.href=url;link.download=name;document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);
@@ -130,8 +130,11 @@
   rows.push(['Limite','Ecarts simules avant couts de changement. Aucun cours reel ni gain etabli.']);
   download('kassim-plans-demo.csv','\uFEFF'+rows.map(r=>r.map(quote).join(';')).join('\r\n'),'text/csv;charset=utf-8');setStatus('export-status','Comparaison CSV préparée. Les paramètres et hypothèses détaillés sont disponibles dans l’export JSON.');
  }
+ const lab = window.KassimLab.mount({getInput:()=>input,getAnalysis:()=>analysis,getPlan:chosen,onInput:(key,value)=>{input={...input,[key]:value};renderDecision();},onPlan:id=>{selectedPlan=id;renderDecision();}});
+ const workspace = window.KassimWorkspace.mount({getInput:()=>input});
+ const news = window.KassimNews.mount({getInput:()=>input,onSignal:signal=>workspace.addSignal(signal),onStress:(key,value,article)=>{input={...input,[key]:value};renderDecision();const box=$('lab-news-context');box.hidden=false;box.innerHTML=`<strong>Hypothèse choisie après lecture d’un signal.</strong> <a href="${escape(article.url)}" target="_blank" rel="noopener noreferrer">${escape(article.title)}</a><p class="small">La variation a été choisie par l’utilisateur ; le lien causal avec les prix reste à confirmer.</p>`;}});
  ['copper','fx','demand','maxShare'].forEach(k=>$(k).addEventListener('input',()=>{input[k]=Number($(k).value);renderDecision();}));
- $('reset').addEventListener('click',()=>{input=E.defaults();selectedPlan='robust';renderSupplierForm();$('supplier-errors').hidden=true;setStatus('supplier-status','Valeurs de démonstration rétablies.');renderDecision();setStatus('export-status','Valeurs réinitialisées. La sauvegarde locale précédente reste disponible tant que vous ne la remplacez pas.');});
+ $('reset').addEventListener('click',()=>{$('lab-news-context').hidden=true;input=E.defaults();selectedPlan='robust';renderSupplierForm();$('supplier-errors').hidden=true;setStatus('supplier-status','Valeurs de démonstration rétablies.');renderDecision();setStatus('export-status','Valeurs réinitialisées. La sauvegarde locale précédente reste disponible tant que vous ne la remplacez pas.');});
  $('apply-suppliers').addEventListener('click',()=>applySuppliers());
  $('save').addEventListener('click',()=>{if(!applySuppliers(false))return;try{localStorage.setItem(STORAGE_KEY,JSON.stringify(input));setStatus('supplier-status','Paramètres appliqués et sauvegardés dans ce navigateur.');}catch(_){setStatus('supplier-status','Stockage local indisponible. Exportez le dossier JSON pour conserver vos paramètres.');}});
  $('import').addEventListener('click',()=>$('import-file').click());
@@ -143,5 +146,5 @@
  let resizeFrame;new ResizeObserver(()=>{cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(renderChart);}).observe($('cost-chart'));
  renderSupplierForm();renderDecision();renderFlow();
  setStatus('supplier-status',loadNote);navigate();
- document.fonts?.ready.then(renderChart);
+ document.fonts?.ready.then(()=>{renderChart();lab.render();});
 })();

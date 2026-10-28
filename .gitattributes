@@ -1,0 +1,4 @@
+# Les emails d’exemple conservent les fins de ligne MIME CRLF.
+assets/example-lot/*.eml whitespace=cr-at-eol
+# Préserver les distributions tierces telles que fournies par leurs éditeurs.
+assets/vendor/*.mjs whitespace=-blank-at-eol

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="fr">
+<head>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta name="description" content="Kassim : démonstration d’aide à la décision achats. Comparez trois plans fournisseurs selon plusieurs scénarios de cuivre, de change et de volumes."><meta name="robots" content="noindex,nofollow">
+ <meta name="color-scheme" content="light"><title>Kassim — Décisions achats</title><link rel="icon" href="data:,">
+ <link rel="stylesheet" href="styles.css">
+ <script defer src="engine.js"></script><script defer src="research.js"></script><script defer src="app.js"></script>
+</head>
+<body>
+<a class="skip" href="#content">Aller au contenu</a>
+<div class="shell">
+ <aside class="rail">
+  <a class="brand" href="#projet" aria-label="Kassim, présentation du projet"><span class="brand-mark" aria-hidden="true">K</span>Kassim</a>
+  <p class="rail-caption">L’atelier des décisions achats</p>
+  <nav class="nav" aria-label="Dossier Kassim">
+   <a href="#projet" aria-current="page"><span class="nav-symbol" aria-hidden="true">◎</span>Le projet</a>
+   <a href="#decision"><span class="nav-symbol" aria-hidden="true">↗</span>Décision à 90 jours</a>
+   <a href="#fournisseurs"><span class="nav-symbol" aria-hidden="true">≡</span>Fournisseurs</a>
+   <a href="#fonctionnement"><span class="nav-symbol" aria-hidden="true">⌘</span>Fonctionnement</a>
+
+
+   <a href="#pilote"><span class="nav-symbol" aria-hidden="true">→</span>À discuter</a>
+
+  </nav>
+  <div class="rail-note"><strong>Démo préparatoire</strong>Fournisseurs et scénarios fictifs. À confronter à vos décisions réelles.</div>
+ </aside>
+ <div class="main">
+  <header class="topbar"><div><strong>Achats directs</strong> &nbsp;/&nbsp; Dossier de décision</div><div class="topbar-meta"><span class="badge demo">Données de démonstration</span><span>Démo de présentation</span></div></header>
+  <main id="content">
+   <section class="page" id="page-projet" aria-labelledby="title-projet">
+    <div class="page-heading"><div><div class="eyebrow">Kassim · présentation du projet</div><h1 id="title-projet">Mieux préparer les décisions achats.</h1><p class="lede">Une recherche et une première démonstration pour explorer une question : comment comparer des options fournisseurs lorsque les matières, le change et les besoins évoluent ?</p></div><a class="btn primary" href="#decision">Explorer la démo</a></div>
+    <div class="notice warning"><strong>Une première démonstration, à confronter au terrain.</strong> Les fournisseurs, contrats et scénarios de la démo sont fictifs. Aucun gain client, cours futur ou avantage commercial n’est démontré à ce stade.</div>
+    <div class="split-copy"><div><h2>Le point de départ</h2><p>Le prix payé à un fournisseur ne suit pas mécaniquement le cours du cuivre. Il dépend aussi du contenu matière, de la transformation, du change, de la formule du contrat, de la date de révision et des quantités disponibles.</p><p>Le projet vise à réunir ces éléments dans un dossier d’arbitrage à 90 jours : comprendre l’exposition, comparer des options réalisables et expliquer les compromis avant de décider.</p></div><div class="verdict"><h2>La question que l’on explore</h2><p>« Avec mes offres, mes clauses et mes volumes, quelles options restent raisonnables si le marché monte, baisse ou évolue autour de mon hypothèse ? »</p><p>L’acheteur conserve le choix. Le logiciel proposé sert à préparer et à documenter sa décision.</p></div></div>
+    <div class="section-gap"><h2>Le travail réalisé</h2><div class="timeline">
+     <div class="phase"><div class="date">Marché</div><div><h3>Étudier treize offres existantes</h3><p>Nous avons comparé les positionnements publics de spécialistes de la matière, de l’intelligence achats, du coût industriel et de l’optimisation fournisseurs. Des solutions comme <a href="https://sievo.com/products/direct-materials-budgeting-forecasting" target="_blank" rel="noopener noreferrer">Sievo</a> ou <a href="https://www.keelvar.com/sourcing-optimization-software" target="_blank" rel="noopener noreferrer">Keelvar</a> couvrent déjà plusieurs de ces usages. La valeur d’une nouvelle solution devra donc se prouver sur un cas précis.</p></div></div>
+     <div class="phase"><div class="date">Données</div><div><h3>Examiner les sources et leurs limites</h3><p>Indices matière, taux de change, devis, contrats et capacités ont été examinés : fréquence, unités, dates de disponibilité, droits d’usage et adéquation au produit acheté. Un indice accessible ne remplace pas une offre exécutable ni une formule contractuelle validée.</p></div></div>
+     <div class="phase"><div class="date">Méthode</div><div><h3>Étudier des mécanismes de simulation financière</h3><p>Quatre projets de recherche ou de trading ont été lus pour examiner la séparation entre données, signal, limites, simulation et suivi. Cette discipline peut inspirer le produit. Leurs performances ne démontrent aucune économie industrielle.</p></div></div>
+     <div class="phase"><div class="date">Prototype</div><div><h3>Construire un moteur explicable</h3><p>La démonstration calcule un coût par fournisseur et par mois à partir du cuivre, du change, d’une part matière fixée et d’un décalage d’indexation. Elle compare des allocations en respectant qualification, capacité et concentration. Les formules et exclusions restent consultables.</p></div></div>
+     <div class="phase"><div class="date">Vérification</div><div><h3>Contrôler les calculs et les cas limites</h3><p>Treize tests du moteur vérifient notamment les conversions, le sens du change, les retards de prix, les contraintes et le regret. Nous avons aussi contrôlé les cas d’import invalide et de référence infaisable. Ces vérifications portent sur le démonstrateur, pas sur une production industrielle réelle.</p></div></div>
+    </div></div>
+    <div class="two-col section-gap"><div class="panel"><h2>Ce que vous pouvez essayer</h2><ol class="rule-list"><li>Faire varier cuivre, change et besoin mensuel.</li><li>Comparer le mix actuel, le coût central minimal et un mix limitant le regret maximal entre scénarios.</li><li>Modifier les coûts, les capacités ou la qualification des trois fournisseurs fictifs.</li><li>Voir une référence devenir infaisable et comprendre pourquoi aucun gain comparatif n’est alors affiché.</li><li>Consulter le schéma de fonctionnement et les limites de la méthode.</li></ol><a class="btn primary section-gap" href="#decision">Tester les scénarios</a></div><div><h2>Comment lire les résultats</h2><p><strong>Le coût central</strong> est un montant conditionnel aux hypothèses affichées. Ce n’est pas une prévision de facture.</p><p><strong>L’écart au mix actuel</strong> est une différence simulée, avant les coûts non modélisés. Il ne doit pas être présenté comme une économie réalisée.</p><p><strong>Le regret maximal</strong> mesure le surcoût du plan face au meilleur plan de chacun des trois futurs. Le compromis retenu dépend des scénarios et des contraintes étudiés.</p></div></div>
+    <div class="notice warning section-gap"><strong>Les limites actuelles :</strong> aucune connexion ERP, extraction de contrat ou donnée de marché en direct. Le modèle ne traite pas encore stock, financement, MOQ, paliers, qualité variable, délai d’arrivée, douanes, rupture ou coût de changement. Il explore une grille d’allocations ; il ne démontre pas un optimum industriel universel.</div>
+    <div class="split-copy section-gap"><div><h2>Ce qu’il reste à vérifier ensemble</h2><p>Quelle décision est récurrente et difficile ? Quelles données sont disponibles et autorisées ? Quels volumes peut-on réellement modifier ? Que fait déjà l’outil en place ? Quelle référence achats et Finance accepteraient-ils pour mesurer une valeur ?</p><p>La prochaine étape envisagée est un essai limité : une famille homogène, quelques fournisseurs déjà qualifiés et une décision à venir, avec des règles confirmées et une mesure convenue avant les résultats.</p></div><div class="panel"><h2>Un bon premier échange</h2><p>Reconstituer un arbitrage passé à partir des informations disponibles ce jour-là. Puis identifier une décision à venir pour comparer la méthode au processus actuel.</p><a class="btn" href="#pilote">Questions à discuter</a></div></div>
+   </section>
+
+   <section class="page" id="page-decision" hidden aria-labelledby="title-decision">
+    <div class="page-heading"><div><div class="eyebrow">Composants thermiques · exposition cuivre</div><h1 id="title-decision">Comparez vos options d’achat.</h1><p class="lede">Comparez trois plans sur trois futurs possibles. Les calculs suivent les clauses ; les scénarios sont vos hypothèses.</p></div><div class="actions"><button class="btn" id="reset">Réinitialiser</button><button class="btn primary" id="export-decision">Exporter le dossier</button></div></div>
+    <div class="notice warning"><strong>Simulation fictive.</strong> Trois fournisseurs, une pièce équivalente, 90 jours. Le cuivre à 9 000 $/t et le change à 1,10 $/€ sont des bases pédagogiques, sans lien avec les cours actuels. Aucun chiffre n’est une économie démontrée.</div>
+    <div class="panel">
+     <div class="section-head"><h2>Vos hypothèses à M+3</h2><span class="badge">Scénarios conditionnels</span></div>
+     <div class="controls-grid">
+      <div><label class="control-head" for="copper">Cuivre en USD/t <output id="copper-value" for="copper">+12 %</output></label><input id="copper" type="range" min="-30" max="30" step="1" value="12"><div class="control-foot"><span>−30 %</span><span>+30 %</span></div><p class="control-help">Variation du scénario central.</p></div>
+      <div><label class="control-head" for="fx">Dollars pour 1 € <output id="fx-value" for="fx">−3 %</output></label><input id="fx" type="range" min="-15" max="15" step="1" value="-3"><div class="control-foot"><span>€ plus faible</span><span>€ plus fort</span></div><p class="control-help">Une baisse renchérit le cuivre en €.</p></div>
+      <div><label class="control-head" for="demand">Besoin mensuel <output id="demand-value" for="demand">30 000 pièces</output></label><input id="demand" type="range" min="-40" max="40" step="5" value="0"><div class="control-foot"><span>−40 %</span><span>+40 %</span></div><p class="control-help">Même besoin sur chacun des trois mois.</p></div>
+      <div><label class="control-head" for="maxShare">Part maximale par source <output id="maxShare-value" for="maxShare">60 %</output></label><input id="maxShare" type="range" min="40" max="100" step="5" value="60"><div class="control-foot"><span>40 %</span><span>100 %</span></div><p class="control-help">Deux sources minimum, pas de 5 %.</p></div>
+     </div>
+    </div>
+    <div id="model-error" class="notice error section-gap" role="alert" hidden></div>
+    <div class="metrics" id="decision-metrics" aria-live="polite">
+     <div class="metric"><span class="metric-label">Coût central du plan examiné</span><strong class="metric-value num" id="metric-budget">—</strong><small>Achats + transformation + transport · 90 j</small></div>
+     <div class="metric"><span class="metric-label">Écart au mix actuel · central</span><strong class="metric-value num" id="metric-delta">—</strong><small id="metric-delta-note">Écart simulé, avant coûts de changement</small></div>
+     <div class="metric"><span class="metric-label">Regret maximal sur les scénarios</span><strong class="metric-value num" id="metric-regret">—</strong><small>Surcoût face au meilleur plan de chaque futur</small></div>
+    </div>
+    <div id="plans-area">
+     <div class="section-head"><h2>Quel compromis examiner ?</h2><span class="small muted" id="feasible-count"></span></div>
+     <div class="plan-options" id="plan-options" aria-label="Plan examiné"></div>
+     <div class="two-col">
+      <div class="panel"><div class="section-head"><h3>Coût cumulé du plan</h3><span class="small muted">EUR · M+1 à M+3</span></div><div class="legend" aria-label="Légende des scénarios"><span><i class="low"></i>Détente</span><span><i class="base"></i>Central</span><span><i class="high"></i>Tension</span></div><div id="cost-chart" class="chart-container"></div><p id="chart-summary" class="chart-desc"></p></div>
+      <div class="panel"><h3>Répartition proposée</h3><p class="small muted">Mix constant pendant trois mois. Capacités mensuelles supposées disponibles dès M+1.</p><div class="allocation" id="allocation" aria-hidden="true"></div><div class="mix-list" id="mix-list"></div><div class="annotation" id="decision-explanation"></div></div>
+     </div>
+     <div class="panel section-gap"><div class="section-head"><h2>Les trois plans, côte à côte</h2><button class="btn" id="export-csv">Exporter CSV</button></div><div class="table-wrap"><table class="table"><caption class="offscreen">Comparaison des plans et des coûts dans les trois scénarios</caption><thead><tr><th>Plan · parts A / B / C</th><th class="num">Détente</th><th class="num">Central</th><th class="num">Tension</th><th class="num">Regret max.</th><th>Faisabilité</th></tr></thead><tbody id="plans-table"></tbody></table></div></div>
+    </div>
+    <details class="section-gap"><summary>Voir les hypothèses, la formule et les exclusions</summary><div><div id="scenario-table" class="table-wrap"></div><p class="section-gap"><strong>Construction :</strong> trajectoires linéaires depuis la base. Détente = cuivre central −15 points et change central +5 points ; tension = cuivre central +15 points et change central −5 points. Aucune probabilité n’est associée à ces chemins.</p><p>Prix unitaire = conversion + transport + 0,70 kg / 1 000 × [part fixe × 9 000 / 1,10 + part variable × cuivre du mois décalé / change du mois décalé]. Les deux indices utilisent ici le même mois de fixation. Les contrats réels peuvent différer.</p><p><strong>Calcul :</strong> examen exhaustif des allocations à pas de 5 %, sous qualification, capacité et concentration ; minimum deux sources. « Minimal » s’entend sur cette grille et ces scénarios uniquement. Le regret compare chaque plan au meilleur plan qui aurait été choisi en connaissant le scénario.</p><p><strong>Exclusions :</strong> stocks, achat anticipé, MOQ, remises par palier, lead time industriel, coût de rupture, qualité variable, douanes, financement, changement de fournisseur et couverture. La TVA récupérable n’est pas incluse. Les résultats ne justifient aucune commande réelle.</p></div></details>
+    <p id="export-status" class="form-status" role="status"></p>
+   </section>
+
+   <section class="page" id="page-fournisseurs" hidden aria-labelledby="title-fournisseurs">
+    <div class="page-heading"><div><div class="eyebrow">Entrées du moteur</div><h1 id="title-fournisseurs">Une offre n’est pas un cours.</h1><p class="lede">Modifiez les conditions de trois fournisseurs fictifs. Les montants et les plans sont recalculés après validation.</p></div><div class="actions"><button class="btn" id="save">Sauvegarder ici</button><button class="btn" id="import">Importer JSON</button><button class="btn primary" id="apply-suppliers">Appliquer</button><input type="file" id="import-file" accept="application/json,.json" hidden></div></div>
+    <div class="notice"><strong>Même pièce, mêmes spécifications.</strong> Tous les prix sont en €/pièce, sauf l’indice métal. La part fixe s’applique uniquement à la composante cuivre. Le délai d’indexation n’est pas le délai de livraison.</div>
+    <div class="panel"><div class="table-wrap"><table class="table"><caption class="offscreen">Paramètres modifiables des trois fournisseurs</caption><thead><tr><th>Source</th><th>Conversion<br>€/pièce</th><th>Transport<br>€/pièce</th><th>Cuivre fixé<br>%</th><th>Décalage<br>mois</th><th>Capacité<br>pièces/mois</th><th>Qualifié</th></tr></thead><tbody id="supplier-form"></tbody></table></div><p class="small muted section-gap">Données conservées dans cette session ; « Sauvegarder ici » écrit dans le navigateur de cet appareil. Aucun envoi à un serveur. Le stockage local peut être indisponible selon le mode d’ouverture.</p><p id="supplier-status" class="form-status" role="status"></p><p id="supplier-errors" class="notice error" role="alert" hidden></p></div>
+    <div class="panel section-gap"><div class="section-head"><h2>Prix livré par pièce · scénario central</h2><a href="#decision">Revoir les plans</a></div><div class="table-wrap"><table class="table"><thead><tr><th>Fournisseur</th><th class="num">Base fictive</th><th class="num">M+1</th><th class="num">M+2</th><th class="num">M+3</th></tr></thead><tbody id="unit-prices"></tbody></table></div></div>
+    <div class="two-col section-gap"><div><h2>À demander sur un vrai dossier</h2><ul class="rule-list"><li>Référence équivalente, matière/nuance et kg réellement indexés.</li><li>Prix et devise, incoterm, validité, palier de quantité.</li><li>Indice exact, fenêtre de moyenne, date de révision, plancher/plafond.</li><li>Stock déjà engagé, quantité disponible et délai confirmé.</li><li>Qualification par pièce, qualité, garantie et coûts de changement.</li></ul></div><div class="notice warning"><strong>Une capacité n’est pas un score.</strong> Sans confirmation de disponibilité, une offre « moins chère » peut être impossible à obtenir. Le démonstrateur suppose une capacité identique chaque mois ; le pilote devra utiliser des engagements datés.</div></div>
+   </section>
+
+   <section class="page" id="page-fonctionnement" hidden aria-labelledby="title-fonctionnement">
+ <div class="page-heading"><div><div class="eyebrow">Une méthode à éprouver ensemble</div><h1 id="title-fonctionnement">Du contrat à l’arbitrage.</h1><p class="lede">Sélectionnez une étape pour découvrir les données, le calcul et les validations nécessaires. Le schéma décrit le produit envisagé ; cette démo montre le calcul et la comparaison.</p></div></div>
+ <div class="workflow" id="workflow"></div><div class="panel flow-detail" id="flow-detail" aria-live="polite"></div>
+ <div class="verdict section-gap"><h2>Un appui à votre décision.</h2><p>Les hypothèses et contraintes restent visibles. Aucun achat n’est déclenché ; l’acheteur décide. Les formules de vos contrats et les capacités confirmées doivent être validées avant tout usage réel.</p></div>
+ <details class="section-gap"><summary>Comprendre le regret maximal</summary><div><p>Pour chaque scénario, on calcule le meilleur coût parmi les plans autorisés. Le regret d’un plan est son surcoût par rapport à ce repère. Limiter le regret maximal cherche un compromis entre les trois futurs ; cela ne garantit pas le meilleur achat dans le monde réel.</p></div></details>
+ </section>
+
+
+
+
+
+   <section class="page" id="page-pilote" hidden aria-labelledby="title-pilote">
+ <div class="page-heading"><div><div class="eyebrow">Prochain échange</div><h1 id="title-pilote">Partons d’une décision réelle.</h1><p class="lede">Cette démo sert à discuter de votre métier et des limites du modèle. Un exemple expurgé que vous êtes autorisé à partager suffit pour commencer.</p></div></div>
+ <div class="panel"><h2>Quatre questions pour cadrer un essai</h2><ol class="rule-list"><li>Quel a été votre dernier arbitrage fournisseur difficile ?</li><li>Quelles offres, clauses et contraintes aviez-vous à cette date ?</li><li>Quelle décision pourriez-vous réellement modifier dans les 90 prochains jours ?</li><li>Comment achats et Finance reconnaîtraient-ils une décision utile ?</li></ol></div>
+ <div class="two-col section-gap"><div><h2>Un essai limité et vérifiable</h2><p>Choisir une famille de composants, quelques fournisseurs déjà qualifiés et une décision à venir. Confirmer les données et règles, comparer les scénarios puis mesurer le résultat avec votre équipe.</p></div><div class="notice warning"><strong>Ce qui reste à définir ensemble :</strong> périmètre, accès aux données, contraintes, critères de succès et conditions du pilote. Cette démonstration n’annonce aucun résultat client ni engagement commercial.</div></div>
+ </section>
+
+
+  </main>
+  <footer class="footer"><span>Kassim · Démonstration préparatoire</span><a href="#fonctionnement">Méthode et limites</a></footer>
+ </div>
+</div>
+<dialog id="export-dialog" aria-labelledby="export-title"><form method="dialog"><div class="section-head"><h2 id="export-title">Dossier de décision JSON</h2><button class="btn" value="close">Fermer</button></div></form><p class="small muted">Copiez le contenu ou téléchargez-le. Si l’aperçu intégré bloque les fichiers, ouvrez Kassim.html dans votre navigateur habituel.</p><label class="field" for="export-text">Paramètres, résultats et limites<textarea id="export-text" readonly spellcheck="false"></textarea></label><div class="actions section-gap"><button class="btn primary" id="download-json">Télécharger JSON</button><button class="btn" id="copy-json">Copier le JSON</button></div><p id="copy-status" class="form-status" role="status"></p></dialog>
+<noscript><p>Activez JavaScript pour calculer les scénarios et naviguer. Les documents de recherche restent disponibles dans le dossier docs.</p></noscript>
+</body></html>

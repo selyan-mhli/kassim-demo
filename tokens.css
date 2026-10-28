@@ -1,0 +1,18 @@
+/* Hallmark · macrostructure: Workbench · genre: modern-minimal · theme: Cobalt
+ * Navigation produit latérale ; footer Ft2. Aucun décor ou faux navigateur.
+ * Auto-évaluation provisoire : philosophie 4, hiérarchie 4, exécution 4, spécificité 5, retenue 5, variété 4. */
+@font-face{font-family:KassimDisplay;src:url('assets/fonts/space-grotesk-latin-wght-normal.woff2') format('woff2');font-style:normal;font-weight:300 700;font-display:swap}
+@font-face{font-family:KassimBody;src:url('assets/fonts/inter-latin-wght-normal.woff2') format('woff2');font-style:normal;font-weight:100 900;font-display:swap}
+:root{
+ --color-paper:oklch(98.5% .004 250);--color-surface:oklch(100% 0 0);--color-paper-2:oklch(95.5% .008 250);
+ --color-ink:oklch(24% .02 258);--color-body:oklch(34% .018 257);--color-muted:oklch(47% .018 257);
+ --color-accent:oklch(48% .20 256);--color-accent-ink:oklch(99% .003 250);--color-accent-soft:oklch(94% .026 256);
+ --color-rule:oklch(87% .012 250);--color-rule-2:oklch(73% .016 250);--color-focus:oklch(28% .04 258);
+ --color-success:oklch(38% .09 155);--color-success-soft:oklch(95% .025 155);--color-warning:oklch(43% .10 65);--color-warning-soft:oklch(97% .026 85);
+ --color-error:oklch(44% .17 25);--color-error-soft:oklch(96% .02 25);--color-chart-1:var(--color-accent);--color-chart-2:oklch(43% .016 257);--color-chart-3:oklch(47% .09 65);
+ --color-dark:oklch(23% .021 258);--color-dark-muted:oklch(80% .012 250);--color-none:transparent;--color-backdrop:oklch(24% .02 258 / .42);
+ --font-display:KassimDisplay,ui-sans-serif,sans-serif;--font-body:KassimBody,ui-sans-serif,sans-serif;--font-mono:ui-monospace,monospace;
+ --text-xs:.75rem;--text-sm:.8125rem;--text-base:.9375rem;--text-lg:1.125rem;--text-xl:1.5rem;--text-2xl:2rem;--text-display:clamp(1.75rem,2.7vw,2.5rem);
+ --space-xs:4px;--space-sm:8px;--space-md:16px;--space-lg:24px;--space-xl:32px;--space-2xl:48px;--space-3xl:64px;
+ --radius-sm:6px;--radius-md:10px;--rule-width:1px;--dur-fast:140ms;--ease-out:cubic-bezier(.16,1,.3,1);
+}

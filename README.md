@@ -5,6 +5,7 @@ Prototype d’aide à la décision à 90 jours. Fournisseurs, contrats, prix de 
 ## Parcours
 
 - **Scénarios** : trois courbes, lecture par mois, coûts mensuels/cumulés, cuivre et change ; carte de sensibilité des trois plans figés.
+- **Cas PAC** : parcours fictif en six étapes, nomenclature métier et comparaison de trois plans pour une même référence cuivre ; capacités et qualification contrôlées. Les hypothèses de ce cas sont indépendantes de l’atelier général et des documents importés.
 - **Documents** : jusqu’à 30 fichiers, classement entre fournisseurs par glisser-déposer ou menu, propositions à corriger et valider, historique séparé par référence/devise/unité, export JSON local.
 - **Veille** : actualités publiques GDELT sur demande ou ajout manuel d’un lien public ; association d’un signal puis hypothèse numérique choisie par l’acheteur.
 - Présentation, dossier de décision, fournisseurs, schéma et questions terrain.

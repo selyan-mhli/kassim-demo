@@ -107,13 +107,13 @@
   $('workflow').querySelectorAll('button').forEach(btn=>btn.addEventListener('click',()=>{const i=Number(btn.dataset.flow);renderFlow(i);$('workflow').querySelector(`[data-flow="${i}"]`)?.focus({preventScroll:true});}));
  }
  function navigate() {
-  const requested=location.hash.slice(1), valid=['scenarios','documents','veille','projet','decision','fournisseurs','fonctionnement','pilote'];
+  const requested=location.hash.slice(1), valid=['scenarios','cas-pac','documents','veille','projet','decision','fournisseurs','fonctionnement','pilote'];
   if(requested==='content') return;
   activePage=valid.includes(requested)?requested:'scenarios';
   document.querySelectorAll('.page').forEach(page=>{page.hidden=page.id!=='page-'+activePage;});
   document.querySelectorAll('.nav a').forEach(a=>{if(a.hash==='#'+activePage)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
   document.title='Kassim — '+$('title-'+activePage).textContent;
-  requestAnimationFrame(()=>{renderChart();lab.render();workspace.render();news.render();});
+  requestAnimationFrame(()=>{renderChart();lab.render();workspace.render();news.render();caseStudy.render();});
  }
  function download(name,content,type) {
   const blob=new Blob([content],{type}); const url=URL.createObjectURL(blob), link=document.createElement('a');link.href=url;link.download=name;document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);
@@ -130,6 +130,7 @@
   rows.push(['Limite','Ecarts simules avant couts de changement. Aucun cours reel ni gain etabli.']);
   download('kassim-plans-demo.csv','\uFEFF'+rows.map(r=>r.map(quote).join(';')).join('\r\n'),'text/csv;charset=utf-8');setStatus('export-status','Comparaison CSV préparée. Les paramètres et hypothèses détaillés sont disponibles dans l’export JSON.');
  }
+ const caseStudy = window.KassimCase.mount();
  const lab = window.KassimLab.mount({getInput:()=>input,getAnalysis:()=>analysis,getPlan:chosen,onInput:(key,value)=>{input={...input,[key]:value};renderDecision();},onPlan:id=>{selectedPlan=id;renderDecision();}});
  const workspace = window.KassimWorkspace.mount({getInput:()=>input});
  const news = window.KassimNews.mount({getInput:()=>input,onSignal:signal=>workspace.addSignal(signal),onStress:(key,value,article)=>{input={...input,[key]:value};renderDecision();const box=$('lab-news-context');box.hidden=false;box.innerHTML=`<strong>Hypothèse choisie après lecture d’un signal.</strong> <a href="${escape(article.url)}" target="_blank" rel="noopener noreferrer">${escape(article.title)}</a><p class="small">La variation a été choisie par l’utilisateur ; le lien causal avec les prix reste à confirmer.</p>`;}});
